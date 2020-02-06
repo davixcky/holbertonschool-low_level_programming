@@ -8,12 +8,13 @@
 
 int main(void)
 {
-for (int i = 'a'; i <= 'z'; i++)
-{
-putchar(i);
-if (i == 'z')
-putchar('\n');
-}
+	int i;
+	for (i = 'a'; i <= 'z'; i++)
+	{
+		putchar(i);
+		if (i == 'z')
+			putchar('\n');
+	}
 
-return (0);
+	return (0);
 }
