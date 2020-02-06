@@ -13,14 +13,11 @@ int main(void)
 	int n = rand() - RAND_MAX / 2;
 	int ld = n % 10;
 
-	char *message;
-
 	if (ld > 5)
-		message = "and is greater than 5";
+		printf("Last digit of %d is %d and is greater than 5\n", n, ld);
 	else if (ld == 0)
-		message = "and is 0";
+		printf("Last digit of %d is %d and is 0\n", n, ld);
 	else if (ld < 6 && ld != 0)
-		message = "and is less than 6 and not 0";
+		printf("Last digit of %d is %d and is less than 6 and not 0\n", n, ld);
 
-	printf("Last digit of %d is %d %s\n", n, ld, message);
 }
