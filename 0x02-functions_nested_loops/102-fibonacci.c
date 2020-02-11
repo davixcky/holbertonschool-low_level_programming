@@ -1,5 +1,9 @@
 #include <stdio.h>
-void calculate_fibonacci()
+
+/**
+ * calculate_fibonacci - Calculate the fibonacci series
+ */
+void calculate_fibonacci(void)
 {
 	long int i, res, counter, aux;
 	char c;
@@ -18,7 +22,10 @@ void calculate_fibonacci()
 	}
 }
 
-
+/**
+ * main - Entry point
+ * Return: Return always 0
+ */
 int main(void)
 {
 	calculate_fibonacci();
