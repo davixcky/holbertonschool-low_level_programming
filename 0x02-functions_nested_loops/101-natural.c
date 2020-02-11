@@ -1,5 +1,8 @@
 #include <stdio.h>
 
+/**
+ * add_multiples - Sum the multiples of 3 and 5 below 1024
+ */
 void add_multiples(void)
 {
 	int i, sum;
@@ -15,6 +18,11 @@ void add_multiples(void)
 	printf("%d\n", sum);
 }
 
+
+/**
+ * main - Entry point
+ * Return: Always 0
+ */
 int main(void)
 {
 	add_multiples();
