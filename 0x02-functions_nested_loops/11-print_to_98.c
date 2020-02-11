@@ -1,54 +1,5 @@
 #include "holberton.h"
-
-/**
- * print_number_lower - Print the numbers lower than 0
- * @n: Is the number to print
- * Result: Nothin
- */
-void print_number_lower(int n)
-{
-	if (n <= -10)
-	{
-		n = n * -1;
-		_putchar('-');
-		_putchar(n / 10 + '0');
-		_putchar(n % 10 + '0');
-	}
-	else
-	{
-		n = n * -1;
-		_putchar('-');
-		_putchar(n + '0');
-	}
-}
-
-/**
- * print_number - Print a number
- * @n: Number to print
- * Return: Nothing
- */
-void print_number(int n)
-{
-	if (n >= 100)
-	{
-		_putchar(n / 100 + '0');
-		_putchar((n % 100) / 10 + '0');
-		_putchar(n % 10 + '0');
-	}
-	else if (n >= 10)
-	{
-		_putchar(n / 10 + '0');
-		_putchar(n % 10 + '0');
-	}
-	else if (n >= 0)
-	{
-		_putchar(n + '0');
-	}
-	else
-	{
-		print_number_lower(n);
-	}
-}
+#include <stdio.h>
 
 /**
  * print_to_98 - Print to the numbers to 98
@@ -61,15 +12,12 @@ void print_to_98(int n)
 	{
 		if (n != 98)
 		{
-			print_number(n);
-			_putchar(',');
-			_putchar(' ');
+			printf("%d, ", n);
 		}
 
 		if (n == 98)
 		{
-			print_number(n);
-			_putchar('\n');
+			printf("%d\n", n);
 			break;
 		}
 		else if (n > 98)
