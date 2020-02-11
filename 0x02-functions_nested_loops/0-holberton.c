@@ -9,12 +9,12 @@
 int main(void)
 {
 	char *text;
-	int len;
+	int len, i;
 
 	text = "Holberton";
 	len = strlen(text);
 
-	for (int i = 0; i <= len; i++)
+	for (i = 0; i <= len; i++)
 	{
 		_putchar(text[i]);
 	}
