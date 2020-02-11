@@ -31,3 +31,4 @@ int main(void)
 	calculate_fibonacci();
 	return (0);
 }
+
