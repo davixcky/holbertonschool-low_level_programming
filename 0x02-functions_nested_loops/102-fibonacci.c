@@ -6,7 +6,6 @@
 void calculate_fibonacci(void)
 {
 	long int i, res, counter, aux;
-	char c;
 
 	i = 1;
 	res = 2;
@@ -17,8 +16,10 @@ void calculate_fibonacci(void)
 		aux = res;
 		res += i;
 		i = aux;
-		c = counter != 47 ? ',' : '\n';
-		printf("%li%c ", res, c);
+		if (counter != 47)
+			printf("%li, ", res);
+		else
+			printf("%li\n", res);
 	}
 }
 
