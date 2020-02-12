@@ -6,7 +6,8 @@
 void calculate_fibonacci(void)
 {
 	int counter;
-	float i, res, aux;
+
+	long double i, res, aux;
 
 	i = 1;
 	res = 2;
@@ -18,7 +19,7 @@ void calculate_fibonacci(void)
 		i = res;
 		res = aux;
 
-		printf(", %.0f",aux);
+		printf(", %.0Lf", aux);
 	}
 	printf("\n");
 }
