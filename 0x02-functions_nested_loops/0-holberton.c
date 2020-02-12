@@ -9,17 +9,15 @@
 int main(void)
 {
 	char *text;
-	int len;
+	int i;
 
-	text = "Holberton";
-	len = strlen(text);
+	text = "Holberton\n";
 
-	for (int i = 0; i <= len; i++)
+	for (i = 0; i <= 9; i++)
 	{
 		_putchar(text[i]);
 	}
 
-	_putchar('\n');
 
 	return (0);
 }
