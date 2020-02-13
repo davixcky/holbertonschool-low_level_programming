@@ -39,7 +39,7 @@ void print_triangle(int size)
 	sp = size;
 	for (i = 1; i <= size; i++)
 	{
-		print_spaces(sp);
+		print_spaces(sp - 1);
 		print_character(i);
 
 		sp--;
