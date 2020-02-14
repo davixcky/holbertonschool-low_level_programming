@@ -1,4 +1,21 @@
 #include "holberton.h"
+/**
+ * reversDigits - Revers a number
+ * @num: Number to revers
+ * Return: Number reversed
+ */
+int reversDigits(int num)
+{
+	int rev_num;
+
+	rev_num = 0;
+	while (num > 0)
+	{
+		rev_num = rev_num * 10 + num % 10;
+		num = num / 10;
+	}
+	return (rev_num);
+}
 
 /**
  * print_number - Print a integer
@@ -6,7 +23,7 @@
  */
 void print_number(int n)
 {
-	int  dig, i;
+	int  dig;
 
 	if (n == 0)
 	{
@@ -19,20 +36,14 @@ void print_number(int n)
 		_putchar('-');
 	}
 
-	i = 0;
-	while (n != 0)
+	n = reversDigits(n);
+
+
+	while (n > 0)
 	{
 		dig = n % 10;
-		i = i * 10 + dig;
-		n /= 10;
-	}
-
-
-	while (i > 0)
-	{
-		dig = i % 10;
 		_putchar(dig + 48);
-		i = i / 10;
+		n = n / 10;
 	}
 
 }
