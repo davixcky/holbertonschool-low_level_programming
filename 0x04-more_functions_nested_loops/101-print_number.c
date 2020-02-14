@@ -1,32 +1,48 @@
 #include "holberton.h"
-#include <stdio.h>
 
 /**
- * calculate_divisor - Calculate the divisor of a number
+ * digits - Numbers digits of a number
  * @n: Number
- * Return: Divisor number
+ * Return: Digits
  */
-int calculate_divisor(int n)
+unsigned int digits(unsigned int n)
 {
-	int div;
+	int i;
 
-	div = 1;
-	while (n > 0)
+	i = 0;
+	while (n != 0)
 	{
-		div = div * 10;
-		n = n / 10;
+		i++;
+		n /= 10;
 	}
 
-	return (div / 10);
+	return (i);
 }
 
+/**
+ * pow_x10 - Custom pow
+ * @exponent: Exponent number
+ * Return: Return the divisor
+ */
+unsigned int pow_x10(unsigned int exponent)
+{
+	unsigned int res, i;
+
+	res = 1;
+	for (i = 1; i < exponent; i++)
+	{
+		res *= 10;
+	}
+
+	return (res);
+}
 /**
  * print_number - Print a number
  * @n: Number
  */
 void print_number(int n)
 {
-	int div;
+	unsigned int div, aux;
 
 	if (n == 0)
 	{
@@ -35,16 +51,20 @@ void print_number(int n)
 	}
 	else if (n < 0)
 	{
-		n = n * -1;
+		aux = -n;
 		_putchar('-');
+	} else
+	{
+		aux = n;
 	}
 
+	div = digits(aux);
+	div = pow_x10(div);
 
-	div = calculate_divisor(n);
-	while (n > 0)
+	while (aux > 0)
 	{
-		_putchar(n / div + 48);
-		n = n % div;
+		_putchar(aux / div + 48);
+		aux = aux % div;
 		div = div / 10;
 	}
 
