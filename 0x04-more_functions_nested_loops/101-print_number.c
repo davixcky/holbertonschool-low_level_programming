@@ -1,5 +1,4 @@
 #include "holberton.h"
-
 /**
  * digits - Numbers digits of a number
  * @n: Number
@@ -42,7 +41,7 @@ unsigned int pow_x10(unsigned int exponent)
  */
 void print_number(int n)
 {
-	unsigned int div, aux;
+	unsigned int div, aux, dig;
 
 	if (n == 0)
 	{
@@ -58,14 +57,17 @@ void print_number(int n)
 		aux = n;
 	}
 
-	div = digits(aux);
-	div = pow_x10(div);
-
+	dig = digits(aux);
+	div = pow_x10(dig);
 	while (aux > 0)
 	{
 		_putchar(aux / div + 48);
 		aux = aux % div;
 		div = div / 10;
+		dig--;
+
+		if (aux == 0 && dig == 1)
+			_putchar('0');
 	}
 
 }
