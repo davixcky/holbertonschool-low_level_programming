@@ -7,7 +7,7 @@
  */
 void print_number(int n)
 {
-	int  digs[10], i;
+	int  dig, i;
 
 	if (n == 0)
 	{
@@ -21,17 +21,18 @@ void print_number(int n)
 	}
 
 	i = 0;
-	while (n > 0)
-	{
-		digs[i] = n % 10;
-		n = n / 10;
-		i++;
+	while (n != 0) {
+		dig = n % 10;
+		i = i * 10 + dig;
+		n /= 10;
 	}
 
-	i = i - 1;
 
-	for (; i >= 0; i--)
+	while (i > 0)
 	{
-		_putchar(digs[i] + 48);
+		dig = i % 10;
+		_putchar(dig + 48);
+		i = i / 10;
 	}
+
 }
