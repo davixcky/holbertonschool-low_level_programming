@@ -21,7 +21,8 @@ void print_number(int n)
 	}
 
 	i = 0;
-	while (n != 0) {
+	while (n != 0)
+	{
 		dig = n % 10;
 		i = i * 10 + dig;
 		n /= 10;
