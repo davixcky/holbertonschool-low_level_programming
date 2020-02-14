@@ -23,7 +23,7 @@ int reversDigits(int num)
  */
 void print_number(int n)
 {
-	int  dig;
+	unsigned int  dig;
 
 	if (n == 0)
 	{
