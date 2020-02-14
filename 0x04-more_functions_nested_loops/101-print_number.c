@@ -1,5 +1,4 @@
 #include "holberton.h"
-#include <stdio.h>
 
 /**
  * print_number - Print a integer
@@ -16,7 +15,7 @@ void print_number(int n)
 	}
 	else if (n < 0)
 	{
-		n = -n;
+		n = n * -1;
 		_putchar('-');
 	}
 
