@@ -1,29 +1,32 @@
 #include "holberton.h"
-/**
- * reversDigits - Revers a number
- * @num: Number to revers
- * Return: Number reversed
- */
-int reversDigits(int num)
-{
-	int rev_num;
+#include <stdio.h>
 
-	rev_num = 0;
-	while (num > 0)
+/**
+ * calculate_divisor - Calculate the divisor of a number
+ * @n: Number
+ * Return: Divisor number
+ */
+int calculate_divisor(int n)
+{
+	int div;
+
+	div = 1;
+	while (n > 0)
 	{
-		rev_num = rev_num * 10 + num % 10;
-		num = num / 10;
+		div = div * 10;
+		n = n / 10;
 	}
-	return (rev_num);
+
+	return (div / 10);
 }
 
 /**
- * print_number - Print a integer
+ * print_number - Print a number
  * @n: Number
  */
 void print_number(int n)
 {
-	unsigned int  dig;
+	int div;
 
 	if (n == 0)
 	{
@@ -36,14 +39,14 @@ void print_number(int n)
 		_putchar('-');
 	}
 
-	n = reversDigits(n);
 
-
+	div = calculate_divisor(n);
 	while (n > 0)
 	{
-		dig = n % 10;
-		_putchar(dig + 48);
-		n = n / 10;
+		_putchar(n / div + 48);
+		n = n % div;
+		div = div / 10;
 	}
 
 }
+
