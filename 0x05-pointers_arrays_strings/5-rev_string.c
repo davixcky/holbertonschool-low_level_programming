@@ -40,11 +40,15 @@ void rev_string(char *s)
 
 	if (!s)
 		return;
-	size = _strlen(s) - 1;
+
+	size = _strlen(s);
+
+	if (size < 2)
+		return;
 
 	for (i = 0; i < size / 2; i++)
 	{
-		swap(s + i, s + size - i);
+		swap(s + i, s + size - i - 1);
 	}
 }
 
