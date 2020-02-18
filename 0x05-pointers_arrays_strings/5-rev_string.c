@@ -22,7 +22,7 @@ void _strcpy2(char *dest, char *src)
 void rev_string(char *s)
 {
 	int i, j;
-	char aux[100];
+	char aux[200];
 
 	for (i = 0; s[i] != '\0'; i++)
 	{
