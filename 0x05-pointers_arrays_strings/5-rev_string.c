@@ -1,18 +1,33 @@
 #include "holberton.h"
 
 /**
- * _strcpy2 - Copy a string to another
- * @dest: Destination copy
- * @src: Source for copy
+ * swap - Swap two integeres
+ * @a: Integer
+ * @b: Integer
  */
-void _strcpy2(char *dest, char *src)
+void swap(char *a, char *b)
+{
+	char aux;
+
+	aux = *a;
+	*a = *b;
+	*b = aux;
+}
+
+/**
+ * _strlen - Len of a string
+ * @s: String
+ * Return: Length
+ */
+int _strlen(char *s)
 {
 	int i;
 
-	for (i = 0; src[i] != '\0'; i++)
+	for (i = 0; s[i] != '\0'; i++)
 	{
-		dest[i] = src[i];
 	}
+
+	return (i);
 }
 
 /**
@@ -21,21 +36,12 @@ void _strcpy2(char *dest, char *src)
  */
 void rev_string(char *s)
 {
-	int i, j;
-	char aux[2000];
+	int i, size;
 
-	for (i = 0; s[i] != '\0'; i++)
+	size = _strlen(s) - 1;
+	for (i = 0; i < size / 2; i++)
 	{
-	}
-
-	_strcpy2(aux, s);
-
-	j = 0;
-	i--;
-	for (; i >= 0; i--)
-	{
-		s[j] = aux[i];
-		j++;
+		swap(s + i, s + size - i);
 	}
 }
 
