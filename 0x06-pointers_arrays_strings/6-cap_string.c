@@ -18,44 +18,18 @@ int is_lowercase(char c)
 char *cap_string(char *s)
 {
 
-	int i;
-	char aux;
+	int i, j;
+	char signs[] = {9, ' ', '\n', ',', ';', '.', '!', '?', '"', '(', ')', '{', '}'};
 
-	for (i = 0; s[i] != '\0'; i++)
+	for (i = 0; *(s + i)  != '\0'; i++)
 	{
-		aux = s[i];
-		if (i == 0)
+		if (is_lowercase( *(s + i) ))
 		{
-			if (is_lowercase(aux))
+			for (j = 0; signs[j] != '\0'; j++)
 			{
-				s[i] = aux - 32;
+				if (i == 0 || *(s + i - 1) == signs[j])
+					s[i] -= 32;
 			}
-		}
-
-		if (aux == ' ' || aux == 44 || aux == 59 || aux == 40 || aux == 41 || aux == 33 || aux == 63 || aux == 123 || aux == 125 || aux == 34 || aux == 46 || aux == '\t' || aux == '\n')
-		{
-			i++;
-			aux = s[i];
-			if (is_lowercase(aux))
-			{
-				s[i] = aux - 32;
-			}
-		}
-
-		if (aux == '\n')
-		{
-			i++;
-			aux = s[i];
-			if (is_lowercase(aux))
-				s[i] = aux - 32;
-		}
-
-		if (aux == ' ')
-		{
-			i++;
-			aux = s[i];
-			if (is_lowercase(aux))
-				s[i] = aux - 32;
 		}
 	}
 
