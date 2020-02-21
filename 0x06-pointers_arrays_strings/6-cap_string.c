@@ -11,25 +11,38 @@ int is_lowercase(char c)
 }
 
 /**
+ * character - Verify if is a special
+ * @c: Character
+ * Return: 1 or 0
+ */
+int character(char c)
+{
+	char signs[] = "\t \n,.;!?\"(){}";
+	int i;
+
+	for (i = 0; i < 13; i++)
+	{
+		if (signs[i] == c)
+			return (1);
+	}
+
+	return (0);
+}
+
+/**
  * cap_string - capitalizes all words of a string
  * @s: String
  * Return: String
  */
 char *cap_string(char *s)
 {
+	int i;
 
-	int i, j;
-	char signs[] = {9, ' ', '\n', ',', ';', '.', '!', '?', '"', '(', ')', '{', '}'};
-
-	for (i = 0; *(s + i)  != '\0'; i++)
+	for (i = 0; s[i] != '\0'; i++)
 	{
-		if (is_lowercase( *(s + i) ))
+		if (character(s[i]) && (s[i + 1] >= 'a' && s[i + 1] <= 'z'))
 		{
-			for (j = 0; signs[j] != '\0'; j++)
-			{
-				if (i == 0 || *(s + i - 1) == signs[j])
-					s[i] -= 32;
-			}
+			s[i + 1] = s[i + 1] - 32;
 		}
 	}
 
