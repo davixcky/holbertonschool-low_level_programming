@@ -1,50 +1,46 @@
 #include "holberton.h"
-
 /**
- * is_lowercase - Check if the character are in lowercase
- * @c: Character
- * Return: 1 or 0
+ * _isalpha - The letter is a letter.
+ * @c: character.
+ * Return: Return 1 if it's truth.
  */
-int is_lowercase(char c)
+int _isalpha(char c)
 {
 	return (c >= 'a' && c <= 'z');
 }
-
 /**
- * character - Verify if is a special
- * @c: Character
- * Return: 1 or 0
+ * _bypunt - Checks if the word is precessed by a puntiation sign.
+ * @sim: character.
+ * Return: Return 1 if it's truth.
  */
-int character(char c)
+int _bypunt(char sim)
 {
-	char signs[] = "\t \n,.;!?\"(){}";
-	int i;
-
-	for (i = 0; i < 13; i++)
-	{
-		if (signs[i] == c)
-			return (1);
-	}
-
-	return (0);
+	return (sim == ',' || sim == ';' || sim == '.'
+			|| sim == '!' || sim == '?' || sim == '"'
+			|| sim == '(' || sim == ')' || sim == '{'
+			|| sim == '}' || sim == ' ');
 }
-
 /**
- * cap_string - capitalizes all words of a string
- * @s: String
- * Return: String
+ * cap_string - Capitalizes all words of a string.
+ * @s: String.
+ * Return: Return string with capitalizes.
  */
 char *cap_string(char *s)
 {
 	int i;
 
-	for (i = 0; s[i] != '\0'; i++)
+	i = 0;
+
+	for (i = 0; *(s + i) != '\0'; i++)
 	{
-		if (character(s[i]) && (s[i + 1] >= 'a' && s[i + 1] <= 'z'))
+		if (_isalpha(*(s + 0)))
+			*(s) = (*(s) - 32);
+		if ((_bypunt(*(s + i)) || *(s + i) == '\n' || *(s + i) == '\t')
+				&& _isalpha(*(s + i + 1)))
 		{
-			s[i + 1] = s[i + 1] - 32;
+			*(s + i + 1) = (*(s + i + 1) - 32);
 		}
 	}
-
 	return (s);
+}
 }
