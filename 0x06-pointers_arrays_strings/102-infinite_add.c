@@ -1,76 +1,54 @@
 #include "holberton.h"
 #include <stdio.h>
-
-int _strlen(char *s)
+/**
+ * infinite_add - Adds two numbers
+ * @n1: first number.
+ * @n2: second number.
+ * @r: buffer to function.
+ * @size_r: Buffer size.
+ * Return: Pointer to awnser.
+ */
+char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {
-	int i;
+	int num, i, j, k, l, m, sum, remain, num1, num2;
 
-	for (i = 0; s[i] != '\0'; i++)
-	{
-	}
-
-	return (i);
-}
-
-
-void swap_int(char *a, char *b)
-{
-	char aux;
-
-	aux = *a;
-	*a = *b;
-	*b = aux;
-}
-
-
-char *infinite_add(char *n1, char *n2, char *c, int size_r)
-{
-	int l_n1, l_n2; /* length */
-	int res, car, aux, i, j, car_temp;
-
-	l_n1 = _strlen(n1);
-	l_n2 = _strlen(n2);
-
-	l_n1--;
-	l_n2--;
-
-	i = 0;
-	car = 0;
-	car_temp = 0;
-
-	for (; l_n1 >= 0 || l_n2 >= 0; l_n1--, l_n2--)
-	{
-		if (l_n1 < 0) /* no more numbers */
-			res = n2[l_n2] - '0';
-		else if (l_n2 < 0)
-			res = n1[l_n1] - '0';
-		else
-			res = n1[l_n1] - '0' + n2[l_n2] - '0';
-
-		res += car_temp;
-		if (res >= 10)
-			car = res / 10;
-
-		aux = res % 10;
-		c[i] =  aux + 48;
-		car_temp = car;
+	i = l = j = k = remain =  0;
+	while (n1[i] != '\0')
 		i++;
-	}
-
-	if (car_temp != 0)
-		c[i] = car_temp + '0';
-
-	i++;
-
-	c[i] = '\0';
-	for (j = 0; j < i / 2; j++)
-	{
-		swap_int(c + j, c + i - j - 1);
-	}
-
-	if (i + 1 > size_r)
+	while (n2[j] != '\0')
+		j++;
+	if (i + 2 > size_r || j + 2 > size_r)
 		return (0);
-
-	return (c);
-
+	i = i - 1;
+	j = j - 1;
+	while (i >= 0 || j >= 0)
+	{
+		num1 = num2 = 0;
+		if (i >= 0)
+			num1 = n1[i--] - '0';
+		if (j >= 0)
+			num2 = n2[j--] - '0';
+		sum = num1 + num2 + remain;
+		if (sum > 9)
+		{
+			remain = 1;
+			sum = sum - 10;
+		}
+		else
+			remain = 0;
+		r[k++] = (sum + '0');
+	}
+	if (remain == 1)
+		r[k++] = (1 + '0');
+	m = k;
+	k = k - 1;
+	for (l = 0; l < k; l++, k--)
+	{
+		num = r[k];
+		r[k] = r[l];
+		r[l] = num;
+	}
+	r[m] = '\0';
+	return (r);
 }
+
