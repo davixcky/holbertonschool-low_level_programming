@@ -1,5 +1,5 @@
 #include "holberton.h"
-#include <stdio.h>
+#include <stdlib.h>
 
 /**
  *  * _strlen - Len of a string
@@ -47,5 +47,5 @@ char *_strstr(char *haystack, char *needle)
 	if (letter == needle_size)
 		return (pos);
 
-	return (haystack);
+	return (NULL);
 }
