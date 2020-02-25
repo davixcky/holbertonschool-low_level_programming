@@ -32,6 +32,9 @@ char *_strstr(char *haystack, char *needle)
 	letter = 0;
 
 	needle_size = _strlen(needle);
+	if (needle_size == 0)
+		return (haystack);
+
 	for (; *haystack != 0; haystack++)
 	{
 		if (*haystack == needle[0])
