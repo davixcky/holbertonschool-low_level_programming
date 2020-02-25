@@ -53,5 +53,5 @@ char *_strstr(char *haystack, char *needle)
 	if (letter == needle_size)
 		return (pos);
 
-	return (haystack);
+	return (0);
 }
