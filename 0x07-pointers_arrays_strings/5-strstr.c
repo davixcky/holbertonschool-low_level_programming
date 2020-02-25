@@ -38,14 +38,13 @@ char *_strstr(char *haystack, char *needle)
 			pos = haystack;
 			for (; *needle != 0 && *haystack != 0; needle++, haystack++)
 			{
-				if (*haystack == *needle)
-				{
-					letter++;
-				}
-				else
+				if (*haystack != *needle)
 				{
 					letter = 0;
+					break;
 				}
+
+				letter++;
 			}
 		}
 	}
