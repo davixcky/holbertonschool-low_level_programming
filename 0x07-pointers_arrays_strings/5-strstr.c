@@ -2,10 +2,10 @@
 #include <stdlib.h>
 
 /**
- *  * _strlen - Len of a string
- *   * @s: String
- *    * Return: Length
- *     */
+ * _strlen - Len of a string
+ * @s: String
+ * Return: Length
+ **/
 int _strlen(char *s)
 {
 	int i;
@@ -18,11 +18,17 @@ int _strlen(char *s)
 }
 
 
-
+/**
+ * _strstr - Locates a substring
+ * @haystack: String
+ * @needle: Substring
+ * Return: The substring in the string
+ */
 char *_strstr(char *haystack, char *needle)
 {
 	int letter, needle_size;
 	char *pos;
+
 	letter = 0;
 	needle_size = _strlen(needle);
 	for (; *haystack != 0; haystack++)
@@ -47,5 +53,5 @@ char *_strstr(char *haystack, char *needle)
 	if (letter == needle_size)
 		return (pos);
 
-	return (NULL);
+	return (haystack);
 }
