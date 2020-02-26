@@ -3,7 +3,9 @@
 
 /**
  * _calc_sqrt - Returns the natural square root
- * @start: Point form
+ * @n: Number
+ * @start: Point from start
+ * Return: Natural square root
  */
 int _calc_sqrt(int n, int start)
 {
