@@ -39,21 +39,26 @@ int is_number(char *s)
  * add - Sum two numbers
  * @s: String
  * @argc: Size of s
+ * @sum: Sum
  * Return: Return the sum
  **/
-int add(char **s, int argc)
+char add(char **s, int argc, int *sum)
 {
-	int i, sum;
+	int i;
 
-	sum = 0;
+	*sum = 0;
 	for (i = 1; i < argc; i++)
 	{
 		if (is_number(s[i]))
-			sum += is_number(s[i]);
+			*sum += is_number(s[i]);
 		else
-			return (1);
+		{
+			*sum = 0;
+			return ('n');
+		}
 	}
-	return (sum);
+
+	return ('y');
 }
 
 /**
@@ -66,11 +71,7 @@ int main(int argc, char **argv)
 {
 	int aux;
 
-	if (argc == 1)
-		printf("0\n");
-
-	aux = add(argv, argc);
-	if (aux == 1)
+	if (add(argv, argc, &aux) == 'n')
 		return (1);
 
 	printf("%d\n", aux);
