@@ -1,6 +1,12 @@
 #include "holberton.h"
 #include <stdio.h>
 
+/**
+ * alloc_grid - 2 dimensional array of integers
+ * @width: Numbers of columns
+ * @height: Numbers of rows
+ * Return: 2 dimensional array of integers
+ **/
 int **alloc_grid(int width, int height)
 {
 	int **arr, i, j;
