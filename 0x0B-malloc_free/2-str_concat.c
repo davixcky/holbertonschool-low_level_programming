@@ -2,10 +2,10 @@
 #include <stdio.h>
 
 /**
- *  *  * _strlen - Len of a string
- *   *   * @s: String
- *    *    * Return: Length
- *     *     */
+ * _strlen - Len of a string
+ * @s: String
+ * Return: Length
+ **/
 int _strlen(char *s)
 {
 	int i;
@@ -17,7 +17,12 @@ int _strlen(char *s)
 	return (i);
 }
 
-
+/**
+ * str_concat - Concatenates two strings
+ * @s1: String 1
+ * @s2: String 2
+ * Return: Strings concatenates
+ **/
 char *str_concat(char *s1, char *s2)
 {
 	int size_s1, size_s2, i, j;
