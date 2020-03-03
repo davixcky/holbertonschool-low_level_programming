@@ -1,5 +1,11 @@
 #include "holberton.h"
 
+/**
+ * create_array - Initializes it with a specific char
+ * @size: Size of the array
+ * @c: Specific character
+ * Return: The new array with specific characters
+ **/
 char *create_array(unsigned int size, char c)
 {
 	char *ptr;

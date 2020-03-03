@@ -1,10 +1,10 @@
 #include "holberton.h"
 
 /**
- *  * _strlen - Len of a string
- *   * @s: String
- *    * Return: Length
- *     */
+ * _strlen - Len of a string
+ * @s: String
+ * Return: Length
+ **/
 int _strlen(char *s)
 {
 	int i;
@@ -16,7 +16,11 @@ int _strlen(char *s)
 	return (i);
 }
 
-
+/**
+ * _strdup - Pointer to a newly allocated space in memory
+ * @str: String to copy
+ * Return: String copied
+ **/
 char *_strdup(char *str)
 {
 	int size, i;
