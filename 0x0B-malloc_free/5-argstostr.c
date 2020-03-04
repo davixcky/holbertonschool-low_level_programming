@@ -43,6 +43,7 @@ char *argstostr(int ac, char **av)
 		for (c = 0; av[r][c] != 0; c++)
 		{
 			words[i] = av[r][c];
+			words[i + 1] = 0;
 			i++;
 		}
 
