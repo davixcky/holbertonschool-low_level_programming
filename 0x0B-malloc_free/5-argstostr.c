@@ -1,55 +1,59 @@
 #include "holberton.h"
-
+#include <stdlib.h>
+#include <stdio.h>
+int _strlen(char *s);
 /**
- * _strlen - Len of a string
- * @s: String
- * Return: Length
+ * argstostr - concatenate all arguments of your program with newline
+ * @ac: argument count
+ * @av: double pointer to array of strings passed to main
+ * Return: Null if fail, else return pointer to new string
+ **/
+
+char *argstostr(int ac, char **av)
+{
+	char *s, *t;
+	int x, y, total;
+
+	if (ac == 0 || av == NULL)
+		return (0);
+
+	for (x = 0; x < ac; x++)
+	{
+		for (y = 0; av[x][y] != '\0'; y++, total++)
+			;
+		total++;
+	}
+	total++;
+
+	s = malloc(total * sizeof(char));
+
+	if (s == NULL)
+		return (0);
+
+	t = s;
+	for (x = 0; x < ac; x++)
+	{
+		for (y = 0; av[x][y] != '\0'; y++)
+		{
+			*s = av[x][y];
+			s++;
+		}
+		*s = '\n';
+		s++;
+	}
+	return (t);
+}
+/**
+ * _strlen - return length of a string
+ * @s: char type
+ * Return:  length of string
  **/
 int _strlen(char *s)
 {
-	int i;
+	int a;
 
-	for (i = 0; s[i] != '\0'; i++)
-	{
-	}
-
-	return (i);
+	for (a = 0; s[a] != '\0'; a++)
+		;
+	return (a);
 }
 
-/**
- * argstostr - Concatenates all the arguments of your program
- * @ac: Length of av
- * @av: Array of strings
- * Return: Array of strings
- **/
-char *argstostr(int ac, char **av)
-{
-	char *words, *aux;
-	int len, i, r, c;
-
-	if (ac <= 0 || av == NULL)
-		return (NULL);
-
-	for (i = 0, len = 0; i < ac; i++)
-		len += _strlen(av[i]) + 1;
-
-	words = malloc(len);
-	if (words == NULL)
-		return (NULL);
-
-	i = 0;
-	aux = words;
-	for (r = 0; r < ac; r++)
-	{
-		for (c = 0; av[r][c] != 0; c++)
-		{
-			*words = av[r][c];
-			words++;
-		}
-
-		*words = '\n';
-		words++;
-	}
-
-	return (aux);
-}
