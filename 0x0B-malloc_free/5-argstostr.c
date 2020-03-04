@@ -20,11 +20,11 @@ int _strlen(char *s)
  * argstostr - Concatenates all the arguments of your program
  * @ac: Length of av
  * @av: Array of strings
- * @dest: Array of strings
+ * Return: Array of strings
  **/
 char *argstostr(int ac, char **av)
 {
-	char *words;
+	char *words, *aux;
 	int len, i, r, c;
 
 	if (ac <= 0 || av == NULL)
@@ -38,17 +38,18 @@ char *argstostr(int ac, char **av)
 		return (NULL);
 
 	i = 0;
+	aux = words;
 	for (r = 0; r < ac; r++)
 	{
-		for (c = 0; av[r][c] != 0; c++, i++)
+		for (c = 0; av[r][c] != 0; c++)
 		{
-			words[i] = av[r][c];
+			*words = av[r][c];
+			words++;
 		}
 
-		words[i] = '\n';
-		i++;
+		*words = '\n';
+		words++;
 	}
-	words[i] = 0;
 
-	return (words);
+	return (aux);
 }
