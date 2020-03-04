@@ -40,16 +40,15 @@ char *argstostr(int ac, char **av)
 	i = 0;
 	for (r = 0; r < ac; r++)
 	{
-		for (c = 0; av[r][c] != 0; c++)
+		for (c = 0; av[r][c] != 0; c++, i++)
 		{
 			words[i] = av[r][c];
-			words[i + 1] = 0;
-			i++;
 		}
 
 		words[i] = '\n';
 		i++;
 	}
+	words[i] = 0;
 
 	return (words);
 }
