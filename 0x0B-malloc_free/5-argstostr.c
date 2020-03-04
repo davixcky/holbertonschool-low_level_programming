@@ -27,7 +27,7 @@ char *argstostr(int ac, char **av)
 	char *words;
 	int len, i, r, c;
 
-	if (ac == 0 || av == NULL)
+	if (ac <= 0 || av == NULL)
 		return (NULL);
 
 	for (i = 0, len = 0; i < ac; i++)
