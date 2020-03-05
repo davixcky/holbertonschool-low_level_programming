@@ -58,11 +58,11 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	n = (n >= (unsigned int) size_s2 ? (unsigned int) size_s2 : n);
 	size_s3 = size_s1 + n + 1;
 
-	s3 = malloc(size_s3);
+	s3 = malloc(size_s3 + 1);
 	if (s3 == NULL)
 		return (NULL);
 
-	s3 = _strncat(s3, 0,s1, size_s1,  size_s1, 0);
+	s3 = _strncat(s3, 0, s1, size_s1,  size_s1, 0);
 	size_s3 = _strlen(s3);
 	s3 = _strncat(s3, size_s3, s2, size_s2, (int) n, size_s1);
 
