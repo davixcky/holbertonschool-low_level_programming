@@ -19,9 +19,6 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	while (s2 && s2[l2])
 		l2++;
 
-	printf("%d %d\n", l1 + l2 + 1, l1 + n + 1);
-	printf("%d\n", l1 + l2 + 1);
-
 	if (n >= l2)
 		ptr = malloc(sizeof(char) * (l1 + l2 + 1));
 	else
