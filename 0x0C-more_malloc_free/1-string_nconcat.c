@@ -1,71 +1,54 @@
 #include "holberton.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 /**
- * _strlen - Len of a string
- * @s: String
- * Return: Length
- */
-int _strlen(char *s)
-{
-	int i;
-
-	for (i = 0; s[i] != '\0'; i++)
-		;
-
-	return (i);
-}
-
-/**
- * _strncat - Concatenate two strings
- * @dest: String stored
- * @src: Source
- * @n: Numbers of bytes
- * Return: Return dest
- */
-char *_strncat(char *dest, int l_dest,  char *src, int l_src, int n, int start)
-{
-	int i;
-
-	for (i = 0; i < n && i <= l_src; i++, l_dest++, start++)
-		dest[start] = src[i];
-
-	dest[start + 1] = '\0';
-
-	return (dest);
-}
-
+ *  * string_nconcat - concatenates to strings
+ *   * @s1: first string
+ *    * @s2: second string
+ *     * @n: number of bytes to be used from byte 2
+ *      * Return: pointer to concatenated string in memory
+ *       */
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
-	int size_s1, size_s2, size_s3;
-	char *s3;
+	unsigned int i, j = 0, l1 = 0, l2 = 0;
+	char *ptr;
 
-	if (s1 == NULL)
+	while (s1 && s1[l1])
+		l1++;
+	while (s2 && s2[l2])
+		l2++;
+
+	printf("%d %d\n", l1 + l2 + 1, l1 + n + 1);
+	printf("%d\n", l1 + l2 + 1);
+
+	if (n >= l2)
+		ptr = malloc(sizeof(char) * (l1 + l2 + 1));
+	else
+		ptr = malloc(sizeof(char) * (l1 + n + 1));
+
+	if (ptr == NULL)
 	{
-		s1 = malloc(1);
-		*s1 = 0;
-	}
-
-	if (s2 == NULL)
-	{
-		s2 = malloc(1);
-		*s2 = 0;
-	}
-
-	size_s1 = _strlen(s1);
-	size_s2 = _strlen(s2);
-
-	n = (n >= (unsigned int) size_s2 ? (unsigned int) size_s2 : n);
-	size_s3 = size_s1 + n + 1;
-
-	s3 = malloc(size_s3 + 1);
-	if (s3 == NULL)
 		return (NULL);
+	}
 
-	s3 = _strncat(s3, 0, s1, size_s1,  size_s1, 0);
-	size_s3 = _strlen(s3);
-	s3 = _strncat(s3, size_s3, s2, size_s2, (int) n, size_s1);
+	for (i = 0; i < l1; i++)
+	{
+		ptr[i] = s1[i];
+	}
+	if (n >= l2)
+		for (; i < (l1 + l2); i++)
+		{
+			ptr[i] = s2[j++];
+		}
+	else
+		for (; i < (l1 + n); i++)
+		{
+			ptr[i] = s2[j++];
+		}
 
-	*(s3 + size_s1 + n) = 0;
-	return (s3);
+
+	ptr[i] = '\0';
+
+	return (ptr);
 }
