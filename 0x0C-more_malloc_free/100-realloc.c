@@ -22,7 +22,7 @@ char *_strcpy(char *dest, char *src)
 
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
-	char *s;
+	char *s, *aux;
 
 	if (new_size == old_size)
 		return (ptr);
@@ -46,15 +46,11 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 	if (s == NULL)
 		return (NULL);
 
-	_strcpy(s, ptr);
+	aux = ptr;
+	for (a = 0; a < old_size; a++)
+		s[a] = aux[a];
+
 	free(ptr);
 
-	ptr = malloc(new_size);
-	if (ptr == NULL)
-		return (NULL);
-
-	_strcpy(ptr, s);
-	free(s);
-
-	return (ptr);
+	return (s);
 }
