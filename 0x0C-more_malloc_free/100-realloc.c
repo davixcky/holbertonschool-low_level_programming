@@ -1,25 +1,12 @@
 #include "holberton.h"
 
 /**
- * _strcpy - Copy a string to another
- * @dest: Destination copy
- * @src: Source for copy
- * Return: Return the value of dest
- */
-char *_strcpy(char *dest, char *src)
-{
-	int i;
-
-	for (i = 0; src[i] != '\0'; i++)
-	{
-		dest[i] = src[i];
-	}
-
-	dest[i] = '\0';
-
-	return (dest);
-}
-
+ * _realloc - Reallocates a memory block using malloc and free
+ * @ptr: Pointer to the memory previously allocated
+ * @old_size: Size, in bytes, of the allocated space for ptr
+ * @new_size: New size, in bytes of the new memory block
+ * Return: Memory reallocated
+ **/
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
 	char *s, *aux;
