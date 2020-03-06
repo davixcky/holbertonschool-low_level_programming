@@ -1,5 +1,11 @@
 #include "holberton.h"
 
+/**
+ * _calloc - Allocates memory for an array
+ * @nmemb: Number of elements
+ * @size: Sizeof of type
+ * Return: Pointer to the allocated memory
+ **/
 void *_calloc(unsigned int nmemb, unsigned int size)
 {
 	char *ptr;
