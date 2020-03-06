@@ -1,145 +1,109 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "holberton.h"
 #include <string.h>
 
-int is_digit(char c);
-long is_number(char *s);
-char *multiply(char *n1, char *n2);
-int size(char *str);
-char *sum(char *res, char);
+/**
+ * _isNum - checks if it is fully a number
+ * @num: string to check
+ * Return: 1 if all num 0 if not
+ **/
+
+int _isNum(char *num)
+{
+	int i;
+
+	for (i = 0; num[i] != '\0'; i++)
+	{
+		if (num[i] < '0' || num[i] > '9')
+			return (0);
+	}
+	return (1);
+}
 
 /**
- * main - Entry point
- * @argc: Argv length
- * @argv: Arrays of array of characters
- * Return: Return 0
- */
-int main(int argc, char **argv)
-{
-	char *result;
+ * _memset - sets first n bytes of the memory area
+ * @s: array to set
+ * @b: what to set it to
+ * @n: first n bytes
+ * Return: s
+ **/
 
-	(void) argv;
-	if (argc != 3)
+void *_memset(void *s, int b, unsigned int n)
+{
+	if (n)
 	{
-		printf("Error\n");
-		exit(98);
+		char *d = s;
+
+		do {
+			*d++ = b;
+		} while (--n);
 	}
-
-	result = multiply(argv[1], argv[2]);
-	printf("%s\n", result);
-	free(result);
-
-	return (0);
+	return (s);
 }
 
-int is_digit(char c)
-{
-	return (c >= '0' && c <= '9');
-}
-
-long is_number(char *s)
-{
-	int i;
-	for (i = 0; s[i]; i++)
-	{
-		if (!is_digit(s[i]))
-		{
-			printf("Error\n");
-			exit(98);
-		}
-	}
-
-	return (atol(s));
-}
-
-int size(char *str)
+/**
+ * _strlen - size of string
+ * @s: string to measure
+ * Return: size of string
+ **/
+int _strlen(char *s)
 {
 	int i;
 
-	for (i = 0; str[i] != '\0'; i++)
-		;
-
+	i = 0;
+	while (*(s + i) != '\0')
+		++i;
 	return (i);
 }
 
 /**
- * swap - Swap two integeres
- * @a: Integer
- * @b: Integer
- */
-void swap(char *a, char *b)
+ * main - multiple two positive numbers, it takes two arg
+ * @argc: argument count
+ * @argv: number to multiply
+ * prints out num
+ * Return: 0
+ **/
+
+int main(int argc, char *argv[])
 {
-	char aux;
+	int length, carry, prod, i, j, len1, len2;
+	int *result;
 
-	aux = *a;
-	*a = *b;
-	*b = aux;
-}
-
-
-/**
- * rev_string - Reverses a string.
- * @s: String
- */
-void rev_string(char *s)
-{
-	int i, size_s;
-
-	if (!s)
-		return;
-
-	size_s = size(s);
-
-	if (size_s < 2)
-		return;
-
-	for (i = 0; i < size_s / 2; i++)
+	if (argc != 3 || !(_isNum(argv[1])) || !(_isNum(argv[2])))
 	{
-		swap(s + i, s + size_s - i - 1);
+		puts("Error");
+		exit(98);
 	}
-}
-
-char *sum(char *s, char a)
-{
-	*s = *s + a - 48;
-	return (s);
-}
-
-char *multiply(char *n1, char *n2)
-{
-	char *res;
-	int n1ptr, n2ptr, n1val, n2val, carry, k, aux, k_aux, aux2;
-
-	n2ptr = size(n2) - 1;
-
-	k = k_aux = aux2 = carry = 0;
-
-	res = malloc(n2ptr + 1 + size(n1) * sizeof(int *));
-	if (res == NULL)
-		return (NULL);
-
-	while(n2ptr >= 0)
+	len1 = _strlen(argv[1]), len2 = _strlen(argv[2]);
+	length = len1 + len2;
+	result = calloc(length, sizeof(int *));
+	if (result == NULL)
+		puts("Error"), exit(98);
+	for (i = len2 - 1; i > -1; i--)
 	{
-		n1ptr = size(n1) - 1;
-
-		n2val = n2ptr >= 0 ? n2[n2ptr] - 48 : 0;
-		k = k_aux;
-		k_aux += 1;
-		for (; n1ptr >= 0; n1ptr--)
+		carry = 0;
+		for (j = len1 - 1; j > -1; j--)
 		{
-			aux2++;
-
-			n1val = n1ptr >= 0 ? n1[n1ptr] - 48 : 0;
-			aux = n1val * n2val + carry;
-
-			res[k] += res[k] == 0 ? (aux % 10) + 48 : (aux % 10);
-			carry = aux / 10;
-			k++;
+			prod = (argv[2][i] - '0') * (argv[1][j] - '0');
+			carry =  (prod / 10);
+			result[(i + j) + 1] += (prod % 10);
+			if (result[(i + j) + 1] > 9)
+			{
+				result[i + j] += result[(i + j) + 1] / 10;
+				result[(i + j) + 1] = result[(i + j) + 1] % 10;
+			}
+			result[(i + j)] += carry;
 		}
-
-		n2ptr--;
 	}
-
-	rev_string(res);
-	return (res);
+	if (result[0] == 0)
+		i = 1;
+	else
+		i = 0;
+	for (; i < length; i++)
+		printf("%d", result[i]);
+	printf("\n");
+	free(result);
+	return (0);
 }
+
