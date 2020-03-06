@@ -114,7 +114,7 @@ char *multiply(char *n1, char *n2)
 
 	k = k_aux = aux2 = carry = 0;
 
-	res = malloc(1);
+	res = malloc(n2ptr + 1 + size(n1) * sizeof(int *));
 	if (res == NULL)
 		return (NULL);
 
@@ -128,9 +128,6 @@ char *multiply(char *n1, char *n2)
 		for (; n1ptr >= 0; n1ptr--)
 		{
 			aux2++;
-			res = realloc(res, aux2);
-			if (res == NULL)
-				exit(102);
 
 			n1val = n1ptr >= 0 ? n1[n1ptr] - 48 : 0;
 			aux = n1val * n2val + carry;
