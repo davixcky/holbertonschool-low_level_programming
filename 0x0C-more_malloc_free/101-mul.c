@@ -16,8 +16,9 @@ char *sum(char *res, char);
  */
 int main(int argc, char **argv)
 {
-	(void) argv;
 	char *result;
+
+	(void) argv;
 	if (argc != 3)
 	{
 		printf("Error\n");
@@ -140,7 +141,6 @@ char *multiply(char *n1, char *n2)
 		}
 
 		n2ptr--;
-
 	}
 
 	rev_string(res);
