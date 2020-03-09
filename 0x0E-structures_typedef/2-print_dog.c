@@ -3,8 +3,8 @@
 #include <stdio.h>
 
 /**
- * print_dog -
- * @d:
+ * print_dog - Prints a struct dog
+ * @d: Dog to print
  **/
 void print_dog(struct dog *d)
 {
