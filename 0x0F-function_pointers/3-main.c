@@ -8,7 +8,7 @@
  **/
 int main(int argc, char **argv)
 {
-	int number_a, number_b;
+	int number_a, number_b, res;
 
 	if (argc != 4)
 	{
@@ -23,7 +23,7 @@ int main(int argc, char **argv)
 	if (get_op_func(argv[2]) ==  NULL)
 		exit(100);
 
-	int res = get_op_func(argv[2])(number_a, number_b);
+	res = get_op_func(argv[2])(number_a, number_b);
 	printf("%d\n", res);
 
 	return (0);
