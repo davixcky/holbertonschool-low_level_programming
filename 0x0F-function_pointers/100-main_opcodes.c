@@ -23,8 +23,8 @@ int main(int aux, char **argv)
 
 	char *bytes = (char *) main;
 
-	for (i = 0; i < aux; i++)
-		printf("%x%c", (unsigned char) (bytes[i]), (i < aux - 1) ? ' ' : '\n');
+	for (i = 0; i <= aux; i++)
+		printf("%x%c", (unsigned char) (bytes[i]), (i <= aux - 1) ? ' ' : '\n');
 
 	return 0;
 }
