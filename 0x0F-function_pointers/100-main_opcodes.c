@@ -21,10 +21,10 @@ int main(int aux, char **argv)
 	if (aux < 0)
 		error(2);
 
-	char *bytes = (char *) main;
+	unsigned char *bytes = (unsigned char *) main;
 
 	for (i = 0; i <= aux; i++)
-		printf("%x%c", (unsigned char) (bytes[i]), (i <= aux - 1) ? ' ' : '\n');
+		printf("%x%c", bytes[i], (i < aux) ? ' ' : '\n');
 
 	return 0;
 }
