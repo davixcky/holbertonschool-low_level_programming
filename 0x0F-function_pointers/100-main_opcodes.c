@@ -34,8 +34,8 @@ int main(int aux, char **argv)
 
 	unsigned char *bytes = (unsigned char *) main;
 
-	for (i = 0; i <= aux; i++)
-		printf("%x%c", bytes[i], (i < aux) ? ' ' : '\n');
+	for (i = 0; i < aux; i++)
+		printf("%x%c", bytes[i], (i < aux - 1) ? ' ' : '\n');
 
 	return (0);
 }
