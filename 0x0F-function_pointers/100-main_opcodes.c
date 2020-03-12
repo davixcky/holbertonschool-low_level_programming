@@ -2,6 +2,11 @@
 #include <string.h>
 #include <stdlib.h>
 
+
+/**
+ * error - Print the error
+ * @status: Number to exit
+ **/
 void error(int status)
 {
 	printf("Error\n");
@@ -9,6 +14,12 @@ void error(int status)
 }
 
 
+/**
+ * main - Entry point
+ * @aux: Size of argv
+ * @argv: Arguments
+ * Return: 0
+ **/
 int main(int aux, char **argv)
 {
 
@@ -26,5 +37,5 @@ int main(int aux, char **argv)
 	for (i = 0; i <= aux; i++)
 		printf("%x%c", bytes[i], (i < aux) ? ' ' : '\n');
 
-	return 0;
+	return (0);
 }
