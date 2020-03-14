@@ -84,6 +84,6 @@ void print_all(const char * const fmt, ...)
 		i++;
 	}
 
-	putchar('\n');
+	printf("\n");
 	va_end(args);
 }
