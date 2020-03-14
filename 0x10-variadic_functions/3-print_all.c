@@ -67,7 +67,6 @@ void print_all(const char * const fmt, ...)
 	while (fmt[i] != 0 && fmt != NULL)
 	{
 
-		j = 0;
 		while (j < 4)
 		{
 			if (fmt[i] == *(ops[j].op))
@@ -80,6 +79,7 @@ void print_all(const char * const fmt, ...)
 
 			j++;
 		}
+		j = 0;
 
 		i++;
 	}
