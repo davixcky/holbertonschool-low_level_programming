@@ -64,7 +64,7 @@ void print_all(const char * const fmt, ...)
 	va_start(args, fmt);
 
 	i = j = 0;
-	while (fmt[i] != 0 && fmt)
+	while (fmt[i] != 0 && fmt != NULL)
 	{
 
 		j = 0;
