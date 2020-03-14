@@ -24,7 +24,7 @@ void print_string(va_list list)
  **/
 void print_integer(va_list list)
 {
-	printf("%d", va_arg(list, int));
+	printf("%i", va_arg(list, int));
 }
 
 /**
@@ -64,7 +64,7 @@ void print_all(const char * const fmt, ...)
 	va_start(args, fmt);
 
 	i = j = 0;
-	while (fmt[i] && fmt)
+	while (fmt[i] != 0 && fmt)
 	{
 
 		j = 0;
