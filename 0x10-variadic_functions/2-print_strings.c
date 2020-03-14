@@ -1,5 +1,10 @@
 #include "variadic_functions.h"
 
+/**
+ * print_strings - Prints strings, followed by a new line
+ * @s: String to be printed between the strings
+ * @n: Number of strings passed to the function
+ **/
 void print_strings(const char *s, const unsigned int n, ...)
 {
 	int i;
@@ -21,3 +26,4 @@ void print_strings(const char *s, const unsigned int n, ...)
 
 	va_end(str);
 }
+
