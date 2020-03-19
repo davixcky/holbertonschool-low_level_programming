@@ -6,7 +6,6 @@ size_t print_list(const list_t *h)
 
 	if (h == NULL)
 	{
-		printf("(nil)");
 		return (0);
 	}
 
@@ -17,5 +16,6 @@ size_t print_list(const list_t *h)
 		h = h->next;
 	}
 
+	printf("length %d", i);
 	return (i);
 }
