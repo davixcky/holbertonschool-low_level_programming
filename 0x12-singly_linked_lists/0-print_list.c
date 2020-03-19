@@ -1,5 +1,11 @@
 #include "lists.h"
 
+/**
+ * print_list - Prints all the elements of a list_t list
+ * @h: Head of the list
+ *
+ * Return: Numbers of elements
+ **/
 size_t print_list(const list_t *h)
 {
 	int i;
