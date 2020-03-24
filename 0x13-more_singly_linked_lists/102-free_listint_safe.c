@@ -23,6 +23,7 @@ size_t free_listint_safe(listint_t **head)
 	{
 		tmp = (*head)->next;
 		free(*head);
+		i++;
 	}
 
 	*head = NULL;
