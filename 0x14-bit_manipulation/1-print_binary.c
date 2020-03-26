@@ -1,6 +1,10 @@
 #include "holberton.h"
 #include <stdio.h>
 
+/**
+ * print_binary - Function that prints the binary representation of a number
+ * @n: Number to print in binary
+ **/
 void print_binary(unsigned long int n)
 {
 	unsigned long int aux;
@@ -17,7 +21,6 @@ void print_binary(unsigned long int n)
 		;
 
 	for (i -= 1; i >= 0; i--)
-	{
 		_putchar(48 + ((aux >> i) & 1));
-	}
+
 }
