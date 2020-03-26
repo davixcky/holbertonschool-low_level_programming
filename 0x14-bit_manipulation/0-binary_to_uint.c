@@ -1,20 +1,5 @@
 #include "holberton.h"
 #include <stdio.h>
-/**
- * _pow - Pow
- * @x: Base
- * @y: Exponent
- * Return: Pow
- **/
-unsigned int _pow(int x, int y)
-{
-	unsigned int i, res;
-
-	for (i = 0, res = 1; (int) i < y; i++)
-		res *= x;
-
-	return (res);
-}
 
 /**
  * binary_to_uint - Converts a binary number to an unsigned int
@@ -39,7 +24,7 @@ unsigned int binary_to_uint(const char *b)
 		if (b[i] == 48)
 			continue;
 
-		number += _pow(2, multiplier);
+		number += 1 << multiplier;
 	}
 
 	return (number);
