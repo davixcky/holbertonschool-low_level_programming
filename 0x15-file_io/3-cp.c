@@ -17,10 +17,9 @@ int main(int ac, char **av)
 	if (from == -1)
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", av[1]), exit(98);
 
-	to = open(av[2], O_CREAT | O_WRONLY | O_TRUNC, 0644);
+	to = open(av[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
 	if (to == -1)
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", av[2]), exit(99);
-
 
 	fd = read(from, buff, 1024);
 	if (fd == -1)
