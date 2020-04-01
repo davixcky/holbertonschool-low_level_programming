@@ -1,13 +1,14 @@
 #include "holberton.h"
 
-void print_error_2(char *msg, char *opt, int status, int fd1, int fd2);
 void print_error_1(char *msg, char *opt, int status, int fd1);
 void print_error(char *msg, char *opt, int status);
 
 /**
- * main - Entry point
+ * main - Copies the content of a file-from to file_to file
  * @argc: Numbers of arguments
  * @argv: Arguments
+ *
+ * Return: Return 0
  **/
 int main(int argc, char **argv)
 {
@@ -49,16 +50,13 @@ int main(int argc, char **argv)
 	return (0);
 }
 
-void print_error_2(char *msg, char *opt, int status, int fd1, int fd2)
-{
-	if (fd1 > 0)
-		close(fd1);
-	if (fd2 > 0)
-		close(fd2);
-
-	print_error(msg, opt, status);
-}
-
+/**
+ * print_error_1 - Print the error and close the file descriptor
+ * @msg: Error message to show
+ * @opt: Optional arguments
+ * @status: Exit status code
+ * @fd1: File descriptor
+ **/
 void print_error_1(char *msg, char *opt, int status, int fd1)
 {
 	if (fd1 > 0)
@@ -67,6 +65,12 @@ void print_error_1(char *msg, char *opt, int status, int fd1)
 	print_error(msg, opt, status);
 }
 
+/**
+ * print_error - Print the error and close the file descriptor
+ * @msg: Error message to show
+ * @opt: Optional arguments
+ * @status: Exit status code
+ **/
 void print_error(char *msg, char *opt, int status)
 {
 	dprintf(STDERR_FILENO, "%s%s\n", msg, opt);
