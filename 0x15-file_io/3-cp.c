@@ -1,54 +1,74 @@
 #include "holberton.h"
+
+void print_error_2(char *msg, char *opt, int status, int fd1, int fd2);
+void print_error_1(char *msg, char *opt, int status, int fd1);
+void print_error(char *msg, char *opt, int status);
+
 /**
  * main - Entry point
- * @ac: Number or arguments
- * @av: Arguments
- * Return: 0 if failed
- */
-int main(int ac, char **av)
+ * @argc: Numbers of arguments
+ * @argv: Arguments
+ **/
+int main(int argc, char **argv)
 {
-	int from, to, fd, fd_new, i;
+	int fd_from, fd_to, b_readed, b_writed;
 	char buff[1024];
 
-	if (ac != 3)
-		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n"), exit(97);
+	if (argc != 3)
+		print_error("Usage: cp file_from file_to", "", 97);
 
-	from = open(av[1], O_RDONLY);
-	if (from == -1)
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", av[1]), exit(98);
+	fd_from = open(argv[1], O_RDONLY);
+	if (fd_from == -1)
+		print_error("Error: Can't read from file ", argv[1], 98);
 
-	to = open(av[2], O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH );
-	if (to == -1)
-		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", av[2]), exit(99);
+	fd_to = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
+	if (fd_to == -1)
+		print_error_1("Error: Can't write to ", argv[2], 99, fd_from);
 
-	fd = read(from, buff, 1024);
-	if (fd == -1)
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", av[1]), exit(98);
-
-	fd_new = write(to, buff, fd);
-	if (fd_new == -1)
-		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", av[2]), exit(99);
-
-	i = 2;
-	while (fd > 0)
+	b_readed = read(fd_from, buff, 1024);
+	while (b_readed > 0)
 	{
-		fd = read(from, buff, 1024 * i);
-		if (fd == -1)
-			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", av[1]), exit(98);
+		b_writed = write(fd_to, buff, b_readed);
+		if (b_readed != b_writed)
+			print_error_1("Error: Can't write to ", argv[2], 99, fd_from);
 
-		fd_new = write(to, buff, fd);
-		if (fd_new != fd)
-			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", av[2]), exit(99);
-
-		i++;
+		b_readed = read(fd_from, buff, 1024);
 	}
 
-	if (close(from) == -1)
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", from), exit(100);
+	if (b_readed == -1)
+		print_error("Error: Can't read from file ", argv[1], 98);
 
-	if (close(to) == -1)
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", to), exit(100);
+	b_readed = close(fd_from);
+	if (b_readed < 0)
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd_from), exit(100);
+
+	b_writed = close(fd_to);
+	if (b_writed < 0)
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd_to), exit(100);
 
 	return (0);
 }
 
+void print_error_2(char *msg, char *opt, int status, int fd1, int fd2)
+{
+	if (fd1 > 0)
+		close(fd1);
+	if (fd2 > 0)
+		close(fd2);
+
+	print_error(msg, opt, status);
+}
+
+void print_error_1(char *msg, char *opt, int status, int fd1)
+{
+	if (fd1 > 0)
+		close(fd1);
+
+	print_error(msg, opt, status);
+}
+
+void print_error(char *msg, char *opt, int status)
+{
+	dprintf(STDERR_FILENO, "%s%s\n", msg, opt);
+	exit(status);
+}
