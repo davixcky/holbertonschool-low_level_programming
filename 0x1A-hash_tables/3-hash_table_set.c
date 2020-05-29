@@ -2,6 +2,14 @@
 #include <stdlib.h>
 #include <string.h>
 
+/**
+ * create_node - Create a hash node
+ *
+ * @key: Identifier
+ * @value: Value for @key
+ *
+ * Return: Adrress of the new hash node
+ **/
 hash_node_t *create_node(const char *key, const char *value)
 {
 	char *d_key, *d_value;
@@ -49,7 +57,6 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 			|| !ht->size)
 		return (0);
 
-
 	idx = key_index((unsigned char *) key, ht->size);
 	for (tmp = ht->array[idx]; tmp != NULL; tmp = tmp->next)
 	{
@@ -71,6 +78,5 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 
 	tmp->next = ht->array[idx];
 	ht->array[idx] = tmp;
-
 	return (1);
 }
